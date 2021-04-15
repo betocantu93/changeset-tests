@@ -5,6 +5,16 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    fingerprint: {
+      enabled: true,
+      generateAssetMap: true
+    },
+
+    'ember-fetch': {
+      preferNative: true // Recommended to enable faster preloading for browsers that support it.
+    },
+
+
   });
 
   // Use `app.import` to add additional libraries to the generated

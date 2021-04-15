@@ -1,0 +1,87 @@
+{{#let (changeset this.model) as |changesetObj|}}
+  <EuiFieldText
+    @value={{changeset-get changesetObj 'firstName'}}
+    placeholder="First name"
+    {{on 'input' (pick 'target.value' (changeset-set changesetObj 'firstName'))
+    }}
+  />
+  <br />
+  <EuiFieldText
+    @value={{changeset-get changesetObj 'author.name'}}
+    placeholder="Author name"
+    {{on
+      'input'
+      (pick 'target.value' (changeset-set changesetObj 'author.name'))
+    }}
+  />
+  <br />
+  <EuiSwitch
+    @label="user.address.primary"
+    @checked={{changeset-get changesetObj 'user.address.primary'}}
+    @onChange={{pick
+      'target.checked'
+      (changeset-set changesetObj 'user.address.primary')
+    }}
+  />
+  <br />
+  <EuiSwitch
+    @label="document.bool"
+    @checked={{changeset-get changesetObj 'document.bool'}}
+    @onChange={{pick
+      'target.checked'
+      (changeset-set changesetObj 'document.bool')
+    }}
+  />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+{{log changesetObj}}
+  {{!-- {{changesetObj.user.name}} --}}
+  <GetProp @fieldName="firstName" @changeset={{changesetObj}} />
+  <br />
+  <GetProp @fieldName="author.name" @changeset={{changesetObj}} />
+  <br />
+  <GetProp @fieldName="user.address.primary" @changeset={{changesetObj}} />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <EuiTitle>
+    Changes
+  </EuiTitle>
+
+  {{#each (get changesetObj "changes") as |change index|}}
+    <li>{{change.key}} – {{if change.value change.value "[empty string]"}}</li>
+
+  {{/each}}
+
+
+  <Conditional
+    @fieldNames={{array 'document.bool'}}
+    @changeset={{changesetObj}}
+    @label="document.bool"
+  />
+
+  <Conditional
+    @fieldNames={{array 'user.address.primary' "author.name"}}
+    @changeset={{changesetObj}}
+    @label="user.address.primary or author.name"
+  />
+  <Conditional
+    @fieldNames={{array 'firstName'}}
+    @changeset={{changesetObj}}
+    @label="firstName"
+  />
+  <Conditional
+    @fieldNames={{array 'author.name'}}
+    @changeset={{changesetObj}}
+    @label="author.name"
+  />
+{{/let}}
