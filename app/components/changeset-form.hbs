@@ -16,20 +16,42 @@
   />
   <br />
   <EuiSwitch
-    @label="user.address.primary"
-    @checked={{changeset-get changesetObj 'user.address.primary'}}
+    @label="user.address.primary.really"
+    @checked={{changeset-get changesetObj 'user.address.primary.really'}}
     @onChange={{pick
       'target.checked'
-      (changeset-set changesetObj 'user.address.primary')
+      (changeset-set changesetObj 'user.address.primary.really')
+    }}
+  />
+  <EuiSwitch
+    @label="some.super.ultra.mega.nested.normal.property"
+    @checked={{changeset-get
+      changesetObj
+      'some.super.ultra.mega.nested.normal.property'
+    }}
+    @onChange={{pick
+      'target.checked'
+      (changeset-set
+        changesetObj 'some.super.ultra.mega.nested.normal.property'
+      )
     }}
   />
   <br />
   <EuiSwitch
-    @label="document.bool"
-    @checked={{changeset-get changesetObj 'document.bool'}}
+    @label="document.some.bool"
+    @checked={{changeset-get changesetObj 'document.some.bool'}}
     @onChange={{pick
       'target.checked'
-      (changeset-set changesetObj 'document.bool')
+      (changeset-set changesetObj 'document.some.bool')
+    }}
+  />
+  <EuiSwitch
+    @label="Super deep, initially undefined, megamorphic model set: document.super.mega.nested.property"
+    @checked={{changeset-get changesetObj 'document.super.mega.nested.property'
+    }}
+    @onChange={{pick
+      'target.checked'
+      (changeset-set changesetObj 'document.super.mega.nested.property')
     }}
   />
   <br />
@@ -38,8 +60,8 @@
   <br />
   <br />
   <br />
-
-{{log changesetObj}}
+  {{log (changeset-get changesetObj 'document.super.mega.nested.property')}}
+  {{log changesetObj}}
   {{!-- {{changesetObj.user.name}} --}}
   <GetProp @fieldName="firstName" @changeset={{changesetObj}} />
   <br />
@@ -52,25 +74,33 @@
   <br />
   <br />
   <br />
-
   <EuiTitle>
     Changes
   </EuiTitle>
-
-  {{#each (get changesetObj "changes") as |change index|}}
-    <li>{{change.key}} – {{if change.value change.value "[empty string]"}}</li>
-
+  {{#each (get changesetObj 'changes') as |change index|}}
+    <li>
+      {{change.key}}
+      –
+      {{if change.value change.value '[empty string]'}}
+    </li>
   {{/each}}
-
-
+  <Conditional
+    @fieldNames={{array 'some.super.ultra.mega.nested.normal.property'}}
+    @changeset={{changesetObj}}
+    @label="some.super.ultra.mega.nested.normal.property"
+  />
+  <Conditional
+    @fieldNames={{array 'some.super.ultra.mega.nested'}}
+    @changeset={{changesetObj}}
+    @label="some.super.ultra.mega.nested"
+  />
   <Conditional
     @fieldNames={{array 'document.bool'}}
     @changeset={{changesetObj}}
     @label="document.bool"
   />
-
   <Conditional
-    @fieldNames={{array 'user.address.primary' "author.name"}}
+    @fieldNames={{array 'user.address.primary' 'author.name'}}
     @changeset={{changesetObj}}
     @label="user.address.primary or author.name"
   />

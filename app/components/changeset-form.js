@@ -13,7 +13,6 @@ export default class CFComponent extends Component {
       document: this.args.model,
       user: {
         address: {
-          primary: false
         }
       }
     });

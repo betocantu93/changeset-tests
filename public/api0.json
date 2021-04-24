@@ -3,7 +3,9 @@
     "id": "search-result-0",
     "type": "com.example.bookstore.SearchResults",
     "attributes": {
-      "bool": false,
+      "some": {
+        "bool": false 
+      },
       "results": [
         "isbn:9780760768570",
         "isbn:9780760768587",
