@@ -32,7 +32,7 @@
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^1.10.1",
-    "ember-changeset": "github:betocantu93/ember-changeset#spike-fix-prop-notification",
+    "ember-changeset": "github:betocantu93/ember-changeset#try-mirror",
     "ember-cli": "~3.25.3",
     "ember-cli-app-version": "^4.0.0",
     "ember-cli-babel": "^7.23.1",
@@ -68,9 +68,12 @@
     "qunit-dom": "^1.6.0"
   },
   "engines": {
-    "node": "10.* || >= 12"
+    "node": ">= 12"
   },
   "ember": {
     "edition": "octane"
+  },
+  "volta": {
+    "node": "12.22.1"
   }
 }

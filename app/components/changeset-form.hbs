@@ -84,32 +84,37 @@
       {{if change.value change.value '[empty string]'}}
     </li>
   {{/each}}
-  <Conditional
+  <NativeGetter
     @fieldNames={{array 'some.super.ultra.mega.nested.normal.property'}}
     @changeset={{changesetObj}}
     @label="some.super.ultra.mega.nested.normal.property"
   />
-  <Conditional
+  <ComputedValue
+    @fieldNames={{array 'some.super.ultra.mega.nested.normal.property'}}
+    @changeset={{changesetObj}}
+    @label="some.super.ultra.mega.nested.normal.property"
+  />
+  <NativeGetter
     @fieldNames={{array 'some.super.ultra.mega.nested'}}
     @changeset={{changesetObj}}
     @label="some.super.ultra.mega.nested"
   />
-  <Conditional
+  <NativeGetter
     @fieldNames={{array 'document.bool'}}
     @changeset={{changesetObj}}
     @label="document.bool"
   />
-  <Conditional
+  <NativeGetter
     @fieldNames={{array 'user.address.primary' 'author.name'}}
     @changeset={{changesetObj}}
     @label="user.address.primary or author.name"
   />
-  <Conditional
+  <NativeGetter
     @fieldNames={{array 'firstName'}}
     @changeset={{changesetObj}}
     @label="firstName"
   />
-  <Conditional
+  <NativeGetter
     @fieldNames={{array 'author.name'}}
     @changeset={{changesetObj}}
     @label="author.name"

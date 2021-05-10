@@ -1,0 +1,9 @@
+<EuiTitle>
+  {{or @label @field}}
+  computed:
+</EuiTitle>
+{{#if this.isActive}}
+  Conditional Computed isActive x{{this.activeCount}}
+{{else}}
+  Not active x{{this.notActiveCount}}
+{{/if}}
